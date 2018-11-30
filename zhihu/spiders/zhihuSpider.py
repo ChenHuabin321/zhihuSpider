@@ -64,7 +64,6 @@ class ZhihuSpider(scrapy.Spider):
             match_obj = re.match("(.*zhihu.com/question/(\d+))(/|$).*", response.url)
             if match_obj:
                 question_id = int(match_obj.group(2))
-
             item_loader = ItemLoader(item=ZhihuQuestionItem(), response=response)
             item_loader.add_css("title", "h1.QuestionHeader-title::text")
             item_loader.add_css("content", ".QuestionHeader-detail")
